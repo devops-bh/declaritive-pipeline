@@ -1,28 +1,13 @@
 pipeline {
-    agent any 
-    environment {
-    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-    }
+    agent { dockerfile true }
     stages {
-        stage('Build docker image') {
-            steps {  
-                sh 'docker build -t devopsbh/practice_node_app:latest .'
+        stage('Test') {
+            steps {
+                echo 'docker version'
+                sh 'docker image build --tag devopsbh/practice_node_app:latest .'
+                sh 'docker docker login -p dckr_pat_R8yXrD6mLXPml6AYzZ696h6Cy8g -u devopsbh'
+                sh 'docker image push devopsbh/linux_tweet_app:latest'
             }
-        }
-        stage('login to dockerhub') {
-            steps{
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-            }
-        }
-        stage('push image') {
-            steps{
-                sh 'docker push devopsbh/practice_node_app:latest'
-            }
-        }
-}
-post {
-        always {
-            sh 'docker logout'
         }
     }
 }
