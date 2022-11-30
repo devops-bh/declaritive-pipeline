@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build docker image') {
             steps {  
-                sh 'docker build -t devopsbh/nodeapp:latest .'
+                sh 'docker build -t devopsbh/practice_node_app:latest .'
             }
         }
         stage('login to dockerhub') {
@@ -16,7 +16,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                sh 'docker push devopsbh/nodeapp:latest'
+                sh 'docker push devopsbh/practice_node_app:latest'
             }
         }
 }
