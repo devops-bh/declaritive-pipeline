@@ -1,25 +1,37 @@
 pipeline {
-    agent {
-        dockerfile true   
+    agent any 
+    environment {
+    DOCKERHUB_CREDENTIALS = credentials('devopsbh-dockerhub')
     }
-
-    stages {
-        stage('Build') {
-            steps {
+    stages { 
+        stage('Build docker image') {
+            steps {  
+                 node {
+                      def newApp = docker.build "devopsbh/practice_node_app:latest"
+                     echo 'building'
+                }
+            }
+        }
+        state('test') {
+            echo 'todo: run command against or inside docker container'
+        }
+        stage('login to dockerhub') {
+            steps{
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+        stage('push image') {
+            steps{
                   def newApp = docker.build "devopsbh/practice_node_app:latest"
                   newApp.push()
-                echo 'Building..'
+                  echo 'pushing..'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
+}
+post {
+        always {
+            sh 'docker logout'
         }
     }
 }
+
