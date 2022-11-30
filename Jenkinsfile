@@ -1,9 +1,13 @@
 pipeline {
-    agent any
+    agent any {
+        dockerfile: true   
+    }
 
     stages {
         stage('Build') {
             steps {
+                  def newApp = docker.build "devopsbh/practice_node_app:latest"
+                  newApp.push()
                 echo 'Building..'
             }
         }
