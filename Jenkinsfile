@@ -1,7 +1,9 @@
 pipeline {
-    agent any 
+    agent {
+        dockerfile true
+    }
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('devopsbh-dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages { 
         stage('Build docker image') {
@@ -34,4 +36,3 @@ post {
         }
     }
 }
-
