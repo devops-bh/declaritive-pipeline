@@ -1,19 +1,13 @@
 pipeline {
-    agent {
-        dockerfile true
-    }
+    agent any 
     environment {
     DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
-    stages { 
+    stages {
         stage('Build docker image') {
             steps {  
-                      def newApp = docker.build "devopsbh/practice_node_app:latest"
-                     echo 'building'
+                sh 'docker build -t devopsbh/nodeapp:latest .'
             }
-        }
-        stage('test') {
-            echo 'todo: run command against or inside docker container'
         }
         stage('login to dockerhub') {
             steps{
@@ -22,9 +16,7 @@ pipeline {
         }
         stage('push image') {
             steps{
-                  def newApp = docker.build "devopsbh/practice_node_app:latest"
-                  newApp.push()
-                  echo 'pushing..'
+                sh 'docker push devopsbh/nodeapp:latest'
             }
         }
 }
