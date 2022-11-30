@@ -8,13 +8,11 @@ pipeline {
     stages { 
         stage('Build docker image') {
             steps {  
-                 node {
                       def newApp = docker.build "devopsbh/practice_node_app:latest"
                      echo 'building'
-                }
             }
         }
-        state('test') {
+        stage('test') {
             echo 'todo: run command against or inside docker container'
         }
         stage('login to dockerhub') {
