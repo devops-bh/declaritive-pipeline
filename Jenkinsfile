@@ -1,5 +1,5 @@
 node {
     stage('Hello') {
-        sh 'curl -v'
+        sh 'curl --version'
     }
 } 
