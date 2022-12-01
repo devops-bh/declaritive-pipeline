@@ -1,6 +1,6 @@
 node {
     stage('Hello') {
-        sh 'cd /jobs/docker-workflow/workspace'
-        sh 'pwd'
+        sh 'docker version'
+        sh 'docker container ls'
     }
 } 
