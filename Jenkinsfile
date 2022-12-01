@@ -4,8 +4,8 @@ node {
         sh 'echo pwd'
         sh 'ls'
         sh 'pwd'
-        sh 'chmod 777 ./workspace@scripts/install-docker.sh'
-        sh './workspace@scripts/install-docker.sh'
+        sh 'chmod 777 ./workspace@script/install-docker.sh'
+        sh './workspace@script/install-docker.sh'
         sh 'docker container ls'
     }
 } 
