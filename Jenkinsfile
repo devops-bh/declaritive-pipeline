@@ -1,5 +1,5 @@
-node("myAgent") {
-        stage("One"){
-            echo 'hello'
-        }
-}
+node {
+    stage('Hello') {
+        echo 'hello'
+    }
+} 
