@@ -1,10 +1,9 @@
 pipeline {
-    agent any 
+    agent { dockerfile true }
     stages {
         stage('Test') {
             steps {
-                echo 'docker version'
-                sh 'docker version'
+                sh 'node --version'
             }
         }
     }
