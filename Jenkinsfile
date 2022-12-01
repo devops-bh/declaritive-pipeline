@@ -3,6 +3,6 @@ node('linux') {
   nodejs.pull() // make sure we have the latest available from Docker Hub
   nodejs.inside {
     // …as above
-    node --version
+    sh "node --version"
   }
 }
