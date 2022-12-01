@@ -1,9 +1,9 @@
 node {
     stage('Hello') {
-        sh 'chmod 777 /var/jenkins_home/jobs/docker-workflow/workspace@script/alias-docker.sh'
-        sh '/var/jenkins_home/jobs/docker-workflow/workspace@script/alias-docker.sh'
-        sh 'echo alias'
-        echo alias
-        sh echo alias
+        def docker='/var/jenkins_home/jobs/docker-workflow/workspace@script/'
+        def useDocker(stringOfTasks) {
+            sh useDocker(docker+' '+stringOfTasks   
+        }
+        def useDocker('container ls')
     }
 } 
