@@ -4,6 +4,6 @@ node {
         def useDocker(stringOfTasks) {
             sh useDocker(docker+' '+stringOfTasks   
         }
-        useDocker('container ls')
+        useDocker('container ls');
     }
 } 
