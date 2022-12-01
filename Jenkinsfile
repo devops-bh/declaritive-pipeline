@@ -11,7 +11,7 @@ node {
         sh 'docker image push devopsbh/old_jenkins_test:2.0'
         sh 'docker container run --rm ubuntu'
         */
-        sh '/usr/bin/docker container ls'
+        sh 'ls /usr/bin/'
         echo 'IGNORE: hopefully pushed to dockerhub'
     }
 } 
