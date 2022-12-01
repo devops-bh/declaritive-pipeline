@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  environment {
-    DOCKER_CERT_PATH = credentials('dockerhub')
-  }
   stages {
     stage('foo') {
       steps {
