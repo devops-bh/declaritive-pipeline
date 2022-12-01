@@ -9,8 +9,9 @@ node {
         echo 'unsure if curl is availible'
         sh 'docker image build --tag devopsbh/old_jenkins_test:2.0 .'
         sh 'docker image push devopsbh/old_jenkins_test:2.0'
-        */
         sh 'docker container run --rm ubuntu'
-        echo 'hopefully pushed to dockerhub'
+        */
+        sh 'docker container ls'
+        echo 'IGNORE: hopefully pushed to dockerhub'
     }
 } 
