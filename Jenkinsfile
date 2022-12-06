@@ -7,8 +7,8 @@ pipeline {
     }
     stages { 
         stage('Build docker image') {
-            script {
-                steps {  
+            steps {  
+                script {
                     step {
                       def newApp = docker.build('devopsbh/practice_node_app:latest')
                     } 
