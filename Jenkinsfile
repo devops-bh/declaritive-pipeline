@@ -3,7 +3,7 @@ pipeline {
         dockerfile true
     }
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
     }
     stages { 
         stage('Build docker image') {
@@ -13,7 +13,9 @@ pipeline {
             }
         }
         stage('test') {
-            echo 'todo: run command against or inside docker container'
+            steps {            
+                echo 'todo: run command against or inside docker container'
+            }
         }
         stage('login to dockerhub') {
             steps{
