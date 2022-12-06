@@ -3,9 +3,6 @@ node {
           def image = docker.build 'devopsbh/test'
     } 
     stage("Test") {
-          image.inside {
-            sh 'node --version'
-          }   
            echo docker
     }
 }
