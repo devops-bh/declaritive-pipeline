@@ -6,7 +6,6 @@ node {
           image.inside {
             sh 'node --version'
           }   
-        image.run()
-        
+           echo docker
     }
 }
