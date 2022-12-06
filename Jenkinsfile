@@ -4,7 +4,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                def customImage = docker.build("devopsbh/mytest:latest")
+                def customImage = docker.build "devopsbh/mytest:latest"
                 customImage.inside {
                         sh 'node --version'
                     }
