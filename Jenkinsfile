@@ -7,8 +7,10 @@ pipeline {
         stage('Build') {
             script {
                 step {
-                    def testImage = docker.build("devopsbh/practice_node_app:latest")
-                    echo 'Building..'
+                    step {
+                        def testImage = docker.build("devopsbh/practice_node_app:latest")
+                        echo 'Building..'
+                    }
                 }
             }
         }
