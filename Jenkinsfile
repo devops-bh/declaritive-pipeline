@@ -5,13 +5,16 @@ node {
             sh "node --version"   
         }
         image.run("docker container run --detach --publish 8081:8080 --name nodeapp") 
-        image.rm('nodeapp')
     } 
     stage("Test") {
         sh 'curl http://localhost:8081'
         echo 'curl http://localhost:8081'        
     }
     stage("Deploy") {
+      def image = docker.build 'devopsbh/nodeapp'
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+            image.push 'latest'
+        }
     }
     stage("Cleanup") {
     } 
