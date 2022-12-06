@@ -3,6 +3,6 @@ node {
           def image = docker.build 'devopsbh/test'
     } 
     stage("Test") {
-           echo docker
+           print docker
     }
 }
