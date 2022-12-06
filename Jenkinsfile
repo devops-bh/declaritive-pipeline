@@ -13,18 +13,8 @@ pipeline {
                 }
             }
         }
-        stage('test') {
-
-        }
-        stage('login to dockerhub') {
-        
-            
-        }
-        stage('push image') {
-            
-        }
-}
-post {
+    }
+    post {
         always {
             sh 'docker logout'
         }
