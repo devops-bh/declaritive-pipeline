@@ -8,6 +8,14 @@ node {
     } 
     stage("Test") {
         sh 'curl http://localhost:8081'
-        echo 'curl http://localhost:8081'        
     }
+    stage("Deploy") {
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+            image.push("${env.BUILD_NUMBER}")
+            image.push("latest")
+        }
+    }
+    stage("Cleanup") {
+       image.stop("nodeapp")  
+    } 
 }
