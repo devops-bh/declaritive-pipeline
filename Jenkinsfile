@@ -1,6 +1,6 @@
 node {
     stage("Build") {
-        docker.withRegistry('https://registry.docker.io', 'dockerhub') {
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             def image = docker.build 'devopsbh/nodeapp:latest'
             image.inside {
                 sh "node --version"   
