@@ -10,8 +10,8 @@ node {
         sh 'curl http://localhost:8081'
     }
     stage("Deploy") {
-        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-            image.push("devopsbh")
+        docker.withRegistry('https://registry.docker.io', 'dockerhub') {
+            image.push("devopsbh/nodeapp:latest")
         }
     }
     stage("Cleanup") {
