@@ -1,12 +1,11 @@
 pipeline {
-    agent { dockerfile true }
-    environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+    agent {
+        docker { image 'node:16.13.1-alpine' }
     }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                sh 'docker build --tag devopsbh/test'
+                sh 'node --version'
             }
         }
     }
