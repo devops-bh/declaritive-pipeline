@@ -5,12 +5,10 @@ pipeline {
     }
     stages {
         stage('Build') {
-            script {
-                steps {
-                    step {
-                        def testImage = docker.build("devopsbh/practice_node_app:latest")
-                        echo 'Building..'
-                    }
+            steps {
+                step {
+                    def testImage = docker.build("devopsbh/practice_node_app:latest")
+                    echo 'Building..'
                 }
             }
         }
