@@ -1,6 +1,6 @@
 node {
     stage("Build") {
-          def image = docker.build 'devopsbh/nodeapp'
+          def image = docker.build 'devopsbh/nodeapp:latest'
         image.inside {
             sh "node --version"   
         }
@@ -10,9 +10,7 @@ node {
         sh 'curl http://localhost:8081'
     }
     stage("Deploy") {
-        docker.withRegistry('https://registry.docker.io', 'dockerhub') {
-            image.push()
-        }
+        image.push 'latest'
     }
     stage("Cleanup") {
 
