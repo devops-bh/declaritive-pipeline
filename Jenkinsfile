@@ -11,7 +11,7 @@ node {
     }
     stage("Deploy") {
         docker.withRegistry('https://hub.docker.com', 'dockerhub') {
-            image.push("latest")
+            image.push("devopsbh/latest")
         }
     }
     stage("Cleanup") {
