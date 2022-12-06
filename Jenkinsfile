@@ -1,6 +1,7 @@
 node {
     stage("Build") {
           def image = docker.build 'devopsbh/nodeapp:latest'
+        image.push 'latest'
         image.inside {
             sh "node --version"   
         }
