@@ -9,7 +9,6 @@ node {
             }
             image.run("docker container run --detach --publish 8081:8080 --name nodeapp") 
             sh 'curl http://localhost:8081'
-        image.stop
     } 
     stage("Test") {
     }
