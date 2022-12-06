@@ -3,10 +3,9 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
-                sh 'svn --version'
-                script {
-                    def app = docker.build("devopsbh/test")   
+                def customImage = docker.build("devopsbh/mytest:latest")
+            customImage.inside {
+                    sh 'node --version'
                 }
             }
         }
