@@ -10,7 +10,7 @@ pipeline {
             steps {  
                 script {
                     step {
-                      def newApp = docker.build('devopsbh/practice_node_app:latest')
+                      def newApp = docker.build 'devopsbh/practice_node_app:latest'
                         sh 'docker version'
                     } 
                 }
