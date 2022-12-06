@@ -16,6 +16,6 @@ node {
         }
     }
     stage("Cleanup") {
-       image.stop("nodeapp")  
+
     } 
 }
