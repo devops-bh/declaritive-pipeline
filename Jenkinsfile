@@ -12,6 +12,7 @@ pipeline {
                     step {
                       def newApp = docker.build 'devopsbh/practice_node_app:latest'
                     }
+                }
             } 
         }
     }
