@@ -11,14 +11,10 @@ pipeline {
                 script {
                     step {
                       def newApp = docker.build('devopsbh/practice_node_app:latest')
+                        sh 'docker version'
                     } 
                 }
             } 
-        }
-    }
-    post {
-        always {
-            sh 'docker logout'
         }
     }
 }
