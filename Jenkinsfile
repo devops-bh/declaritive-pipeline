@@ -8,8 +8,7 @@ pipeline {
     stages { 
         stage('Build docker image') {
             steps {  
-                      def newApp = docker.build "devopsbh/practice_node_app:latest"
-                     echo 'building'
+                      def newApp = docker.build 'devopsbh/practice_node_app:latest'
             }
         }
         stage('test') {
@@ -24,8 +23,9 @@ pipeline {
         }
         stage('push image') {
             steps{
+                  /*
                   def newApp = docker.build "devopsbh/practice_node_app:latest"
-                  newApp.push()
+                    newApp.push()*/
                   echo 'pushing..'
             }
         }
