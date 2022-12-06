@@ -3,7 +3,7 @@ node {
           def image = docker.build 'devopsbh/test'
     } 
     stage("Test") {
-        image.withRun {
+        docker.Image.withRun {
                
         }
     }
