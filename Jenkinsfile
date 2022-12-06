@@ -5,7 +5,6 @@ node {
             sh "node --version"   
         }
         image.run("docker container run --detach --publish 8081:8080 --name nodeapp") 
-        image.stop('nodeapp')
         image.rm('nodeapp')
     } 
     stage("Test") {
