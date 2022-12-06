@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                  def newApp = docker.build("devopsbh/practice_node_app:latest")
+                  def testImage = docker.build("devopsbh/practice_node_app:latest")
                 echo 'Building..'
             }
         }
