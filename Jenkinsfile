@@ -1,6 +1,6 @@
 node {
     stage("Build") {
-            def image = docker.build 'devopsbh/nodeapp'
+            def image = docker.build 'devopsbh/nodeapp:dev'
             docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                 image.push 'latest'
             }
