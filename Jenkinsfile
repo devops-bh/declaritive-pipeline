@@ -15,7 +15,9 @@ node {
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             image.push 'latest'
         }
-        sh "ansible-playbook -i inventory ansible-kube-release.yml --tags 'update'"
+        sh 'pwd'
+        sh 'ls'
+        sh "./ansible-playbook -i inventory ansible-kube-release.yml --tags 'update'"
     }
     state("Confirm Deplyment") {
         sh "curl http://54.204.28.63:8080"
