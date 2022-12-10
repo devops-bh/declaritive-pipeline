@@ -1,8 +1,11 @@
 node {
     stage("Build") {
         echo 'hi'
-        sh 'cat Jenkinsfile'
+        sh 'pwd'
+        sh '$(pwd)'
         sh 'ls -a'
+        echo 'ls -a'
+        sh 'cat Jenkinsfile'
         def image = docker.build 'devopsbh/nodeapp'
         image.inside {
             sh "node --version"   
