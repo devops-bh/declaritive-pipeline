@@ -1,6 +1,6 @@
 node {
     stage("Build") {
-        sh 'hi'
+        echo 'hi'
         sh 'cat Jenkinsfile'
         sh 'ls -a'
         def image = docker.build 'devopsbh/nodeapp'
