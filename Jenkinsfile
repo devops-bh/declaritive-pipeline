@@ -1,9 +1,8 @@
 node {
-    stage("Prebuild") {
-        sh 'cat Jenkinsfile'
-        sh "git pull" // ran into issue where Jenkins didn't seem to be pulling the correct file
-    }
     stage("Build") {
+        sh 'hi'
+        sh 'cat Jenkinsfile'
+        sh 'ls -a'
         def image = docker.build 'devopsbh/nodeapp'
         image.inside {
             sh "node --version"   
@@ -19,16 +18,13 @@ node {
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             image.push 'latest'
         }
-        sh 'pwd'
-        sh 'ls'
-        sh "./ansible-playbook -i inventory ansible-kube-release.yml --tags 'update'"
+        sh "ansible-playbook -i inventory ansible-kube-release.yml --tags 'update'"
     }
     state("Confirm Deplyment") {
         sh "curl http://54.204.28.63:8080"
     }
     stage("Cleanup") {
-        echo "here cleanup woul"
-        sh ""
+        sh 'done :)'
     } 
 }
 
