@@ -14,7 +14,7 @@ node {
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             image.push 'latest'
         }
-        sh 'ansible-playbook -i inventory ansible-kube-release.yml --tags update'
+       // sh 'ansible-playbook -i inventory ansible-kube-release.yml --tags update'
     }
     state("Confirm Deplyment") {
         /*
@@ -22,7 +22,7 @@ node {
         //sh "curl http://44.195.81.167:8080"
         //sh "ssh ubuntu@44.195.81.167 curl $(minikube ip):"
         */
-        sh 'ssh ubuntu@44.195.81.167 curl $(minikube node-port-service --url)'
+        //sh 'ssh ubuntu@44.195.81.167 curl $(minikube node-port-service --url)'
     }
     stage("Cleanup") {
         sh 'done :)'
