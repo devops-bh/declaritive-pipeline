@@ -54,6 +54,7 @@
   - name: Rolling updates 
     shell: 
       cmd: mkdir createdbyjenkinsdelsoon
+      cmd: ls
       #cmd: kubectl set image deployments/nodeapp nodeapp=devopsbh/nodeapp:latest
       #cmd: kubectl rollout status deployments/nodeapp
     tags: [update]
