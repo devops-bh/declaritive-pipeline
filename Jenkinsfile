@@ -1,6 +1,5 @@
 node {
     stage("Build") {
-        sh 'cat inventory'
         def image = docker.build 'devopsbh/nodeapp'
         image.inside {
             sh "node --version"   
