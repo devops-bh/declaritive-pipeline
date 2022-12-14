@@ -10,29 +10,27 @@
     # I swear this worked yesterday :| , Minikube no longer seems to be starting 
     # hence the kubectl : Unable to connect to the server : dial tcp <ip>: connect: no route to host
     shell:
-      cmd: minikube start driver=Docker
+      cmd: mkdir ignorethis
+      #cmd: minikube start driver=Docker
     #shell:
     #  cmd: ssh ubuntu@54.204.28.63 'minikube start driver=Docker'
 
   #- name: Create + scale depl
   #  raw: kubectl create deployment nodeapp --image=hub.docker.com/r/devopsbh/nodeapp
     
-  - name: create deployment 
-    shell:
-      cmd: kubectl create deployment nodeapp --image=devopsbh/nodeapp
+  #- name: create deployment 
+  #  shell:
+  #    cmd: kubectl create deployment nodeapp --image=devopsbh/nodeapp
 
   # the Kubectl deployment takes sometime to be ready (i.e. spin up) so I don't think unready deployments can be exposed 
   - name: Pause for 1 minute to let deployment get ready 
     ansible.builtin.pause:
-      minutes: 1
+      minutes: 2
 
-  - name: Expose deployment as a service 
-    raw: kubectl expose deployment/nodeapp --type="NodePort" --port 8080 --name node-port-service
-
-  - name: scale deployment 
-    shell:
-      cmd: kubectl scale deployments/nodeapp --replicas=4
-
+  #- name: Expose deployment as a service 
+  #  shell:
+  #    cmd: kubectl expose deployment/nodeapp --type="NodePort" --port 8080 --name node-port-service
+  #    cmd: kubectl scale deployments/nodeapp --replicas=4
       #cmd: ssh ubuntu@54.204.28.63 'kubectl create deployment nodeapp --image=hub.docker.com/r/devopsbh'
   #  tags: [deploy]
 
