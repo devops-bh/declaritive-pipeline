@@ -15,7 +15,7 @@ node {
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             image.push 'latest'
         }
-       // sh 'ansible-playbook -i inventory ansible-kube-release.yml --tags update'
+       sh 'ansible-playbook -i inventory ansible-kube-release.yml --tags update'
     }
     stage("Confirm Deplyment") {
         /*
