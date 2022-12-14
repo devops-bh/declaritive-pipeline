@@ -17,7 +17,7 @@ node {
         }
        // sh 'ansible-playbook -i inventory ansible-kube-release.yml --tags update'
     }
-    state("Confirm Deplyment") {
+    stage("Confirm Deplyment") {
         /*
         // may need to use ssh since this isn't public 
         //sh "curl http://44.195.81.167:8080"
