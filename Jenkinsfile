@@ -1,6 +1,5 @@
 node {
     stage("Build") {
-        sh 'git pull' // didn't think this was needed but hopefully prevents Jenkins reusing outdated files (e.g. the inventory file)
         sh 'cat inventory'
         def image = docker.build 'devopsbh/nodeapp'
         image.inside {
