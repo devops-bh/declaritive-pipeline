@@ -53,8 +53,9 @@
   # JENKINS WILL ONLY RUN THIS 
   - name: Rolling updates 
     shell: 
-      cmd: kubectl set image deployments/nodeapp nodeapp=devopsbh/nodeapp:latest
-      cmd: kubectl rollout status deployments/nodeapp
+      cmd: mkdir createdbyjenkinsdelsoon
+      #cmd: kubectl set image deployments/nodeapp nodeapp=devopsbh/nodeapp:latest
+      #cmd: kubectl rollout status deployments/nodeapp
     tags: [update]
 
   # the above task hangs without this task (no idea why)
