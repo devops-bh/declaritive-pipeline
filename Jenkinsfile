@@ -9,7 +9,7 @@ node {
             //curl 'http://localhost:8080'
            // sh 'docker container ls'
             sh 'curl --version'            
-            curl 'ipinfo.io/ip'
+            sh 'curl ipinfo.io/ip'
         }
         /*image.run("docker container run --detach --publish 8081:8080 --name nodeapp")/*.inside { 
             //sh 'curl http://localhost:8080'
