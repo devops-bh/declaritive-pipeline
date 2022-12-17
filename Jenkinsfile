@@ -8,8 +8,9 @@ node {
         image.run("docker container run --detach --publish 8081:8080 --name nodeapp") 
     } 
     stage("Test") {
-        sh 'curl http://34.235.26.99:8081'
-        echo 'curl http://34.235.26.99:8081'        
+        sh 'docker exec nodeapp curl http://localhost:8080'
+        echo 'docker exec nodeapp curl http://localhost:8080'        
+        
     }
     stage("Deploy") {
       def image = docker.build 'devopsbh/nodeapp'
