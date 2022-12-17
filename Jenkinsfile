@@ -2,17 +2,16 @@ node {
     stage("Build") {
         git branch: 'main', url: 'https://github.com/devops-bh/declaritive-pipeline.git'
         sh 'curl --version' // works
-        sh 'curl https://2c31-2a00-23c8-6e80-c201-4c3b-cd28-8ed0-988b.ngrok.io'
         // echo curl --version
-        /*
         def image = docker.build 'devopsbh/nodeapp'
         image.inside {
             sh 'node --version'   
             //curl 'http://localhost:8080'
             sh 'docker container ls'
-            
+            sh 'curl --version'            
+            // curl 'ipinfo.io/ip'
         }
-        image.run("docker container run --detach --publish 8081:8080 --name nodeapp")/*.inside { 
+        /*image.run("docker container run --detach --publish 8081:8080 --name nodeapp")/*.inside { 
             //sh 'curl http://localhost:8080'
             //echo 'curl http://localhost:8080'        
             sh 'ls'
