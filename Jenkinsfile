@@ -11,7 +11,8 @@ node {
             sh 'curl --version'            
             sh 'curl ipinfo.io/ip' // EC2 instance IP but not Docker IP 
         }
-        image.run("docker container run --detach --publish 8081:8080 --name nodeapp")
+        //docker container run --detach --publish 80:80 --name linux_tweet_app $DOCKERID/linux_tweet_app:1.0
+        image.run("docker container run --detach --publish 8081:8080 --name nodeapp nodeapp")
         /*^^^^.inside { 
             //sh 'curl http://localhost:8080'
             //echo 'curl http://localhost:8080'        
