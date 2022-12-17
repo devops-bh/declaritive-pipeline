@@ -23,10 +23,10 @@ node {
         // may need to use ssh since this isn't public 
         //sh "curl http://44.195.81.167:8080"
         //sh "ssh ubuntu@44.195.81.167 curl $(minikube ip):"
-        sh 'ssh ubuntu@3.231.223.4 curl $(minikube node-port-service --url)'
+         sh 'ssh ubuntu@3.231.223.4 curl $(minikube node-port-service --url)'
         */
         echo 'attempting ssh'
-        sh 'ssh ubuntu@3.231.223.4 kubectl get services'
+        sh 'ssh ubuntu@3.82.157.75 kubectl get services'
     }
     stage("Cleanup") {
         sh 'done :)'
