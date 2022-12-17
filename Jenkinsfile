@@ -7,9 +7,9 @@ node {
         image.inside {
             sh 'node --version'   
             //curl 'http://localhost:8080'
-            sh 'docker container ls'
+           // sh 'docker container ls'
             sh 'curl --version'            
-            // curl 'ipinfo.io/ip'
+            curl 'ipinfo.io/ip'
         }
         /*image.run("docker container run --detach --publish 8081:8080 --name nodeapp")/*.inside { 
             //sh 'curl http://localhost:8080'
