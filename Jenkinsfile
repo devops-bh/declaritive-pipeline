@@ -1,5 +1,6 @@
 node {
     stage("Build") {
+        git 'https://github.com/devops-bh/declaritive-pipeline.git'
         def image = docker.build 'devopsbh/nodeapp'
         image.inside {
             sh "node --version"   
