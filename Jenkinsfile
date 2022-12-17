@@ -9,7 +9,8 @@ node {
             //curl 'http://localhost:8080'
            // sh 'docker container ls'
             sh 'curl --version'            
-            sh 'curl ipinfo.io/ip'
+            sh 'curl ipinfo.io/ip' // EC2 instance IP but not Docker IP 
+            docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nodeapp
         }
         /*image.run("docker container run --detach --publish 8081:8080 --name nodeapp")/*.inside { 
             //sh 'curl http://localhost:8080'
