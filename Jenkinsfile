@@ -3,11 +3,13 @@ node {
         git branch: 'main', url: 'https://github.com/devops-bh/declaritive-pipeline.git'
         def image = docker.build 'devopsbh/nodeapp'
         image.inside {
-            sh "node --version"   
+            sh 'node --version'   
+            curl 'http://localhost:8080'
         }
-        image.run("docker container run --detach --publish 8081:8080 --name nodeapp") 
-        sh 'docker exec nodeapp curl http://localhost:8080'
-        echo 'docker exec nodeapp curl http://localhost:8080'        
+        image.run("docker container run --detach --publish 8081:8080 --name nodeapp").inside { 
+            sh 'curl http://localhost:8080'
+            echo 'curl http://localhost:8080'        
+        } 
     } 
     stage("Test") {
         
