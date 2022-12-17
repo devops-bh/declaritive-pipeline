@@ -6,10 +6,14 @@ node {
             sh 'node --version'   
             curl 'http://localhost:8080'
         }
+        /* 
         image.run("docker container run --detach --publish 8081:8080 --name nodeapp").inside { 
-            sh 'curl http://localhost:8080'
-            echo 'curl http://localhost:8080'        
+            //sh 'curl http://localhost:8080'
+            //echo 'curl http://localhost:8080'        
+            sh 'ls'
+            sh ''
         } 
+        */ 
     } 
     stage("Test") {
         
