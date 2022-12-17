@@ -10,9 +10,9 @@ node {
            // sh 'docker container ls'
             sh 'curl --version'            
             sh 'curl ipinfo.io/ip' // EC2 instance IP but not Docker IP 
-            docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nodeapp
         }
-        /*image.run("docker container run --detach --publish 8081:8080 --name nodeapp")/*.inside { 
+        image.run("docker container run --detach --publish 8081:8080 --name nodeapp")
+        /*^^^^.inside { 
             //sh 'curl http://localhost:8080'
             //echo 'curl http://localhost:8080'        
             sh 'ls'
@@ -21,6 +21,9 @@ node {
         //sh 'docker container ls' 
         // 'curl http://localhost:8081'
         // sh 'curl http://3.82.157.75:8081'
+        sh 'docker inspect -f "{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}" nodeapp'
+        sh 'docker container ls'
+
     } 
     stage("Test") {
         // curl 'http://google.com'
