@@ -1,7 +1,8 @@
 node {
     stage("Build") {
         git branch: 'main', url: 'https://github.com/devops-bh/declaritive-pipeline.git'
-        sh 'curl --version'
+        sh 'curl --version' // works
+        sh 'curl https://2c31-2a00-23c8-6e80-c201-4c3b-cd28-8ed0-988b.ngrok.io'
         // echo curl --version
         /*
         def image = docker.build 'devopsbh/nodeapp'
@@ -44,7 +45,7 @@ node {
         // sh 'ssh ubuntu@3.82.157.75 kubectl get services'
     }
     stage("Cleanup") {
-        sh 'done :)'
+        //sh 'done :)'
     } 
 }
 
