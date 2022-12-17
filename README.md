@@ -17,3 +17,4 @@ sh "ansible-playbook -i inventory ansible-kube-release.yml --tags update"
 trying with git 'https://github.com/devops-bh/declaritive-pipeline.git'
 
 remember to pull
+? enabled
