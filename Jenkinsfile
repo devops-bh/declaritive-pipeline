@@ -6,10 +6,10 @@ node {
             sh "node --version"   
         }
         image.run("docker container run --detach --publish 8081:8080 --name nodeapp") 
-    } 
-    stage("Test") {
         sh 'docker exec nodeapp curl http://localhost:8080'
         echo 'docker exec nodeapp curl http://localhost:8080'        
+    } 
+    stage("Test") {
         
     }
     stage("Deploy") {
