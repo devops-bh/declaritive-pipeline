@@ -6,15 +6,16 @@ node {
             sh 'node --version'   
             //curl 'http://localhost:8080'
         }
-        image.run("docker container run --detach --publish 8081:8080 --name nodeapp").inside { 
+        image.run("docker container run --detach --publish 8081:8080 --name nodeapp")/*.inside { 
             //sh 'curl http://localhost:8080'
             //echo 'curl http://localhost:8080'        
             sh 'ls'
             echo 'ls'
-        } 
+        } */
+        sh 'docker container ls' 
     } 
     stage("Test") {
-        
+        curl 'http://google.com'
     }
     stage("Deploy") {
       def image = docker.build 'devopsbh/nodeapp'
