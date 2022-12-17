@@ -2,7 +2,7 @@ node {
     stage("Build") {
         git branch: 'main', url: 'https://github.com/devops-bh/declaritive-pipeline.git'
         sh 'docker image build --tag devopsbh/nodeapp .'    
-        sh 'docker container run --detach --publish 8081:8080 --name nodeapp devopsbh/nodeapp'
+        sh 'docker container run --detach --publish 8081:8080 devopsbh/nodeapp'
         sh 'curl http://localhost:8081'
     } 
     stage("Test") {
