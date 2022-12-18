@@ -8,6 +8,7 @@ node {
         sh 'echo $(docker container ls)'
         sh 'echo $(curl http://localhost:8081)'    
         sh 'docker stop nodeappcontainer'
+        sh 'docker rm nodeappcontainer'  
     }
     stage("Deploy") {
       def image = docker.build 'devopsbh/nodeapp'
@@ -25,7 +26,6 @@ node {
     stage("Cleanup") {
         echo 'done :)'
         // I stopped the shell invoked Docker container early in case it conflicted with the Docker Workflow plugin's container instance 
-        sh 'docker rm nodeappcontainer'  
         // sorry for not commiting to 1 way or the other; I wanted to use Docker Worfklow but realises that "curling" it was awkward 
     } 
 }
