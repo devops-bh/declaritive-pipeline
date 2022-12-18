@@ -25,6 +25,7 @@ node {
     stage("Confirm Deplyment") {
         sshagent(['jssh']) {
             //sh 'ssh ubuntu@54.211.119.184 curl $(minikube service node-port-service --url)'
+            sh 'echo $(ssh ubuntu@54.211.119.184 minikube ip)'
             sh 'echo $(ssh ubuntu@54.211.119.184 kubectl get services)'
             // could optionally Ngrok here too 
         }
