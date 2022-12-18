@@ -4,7 +4,7 @@ node {
         sh 'docker image build --tag devopsbh/nodeapp .'    
     } 
     stage("Test") {
-        sh 'docker start nodeappcontainer --detach --publish 8081:8080 devopsbh/nodeapp'
+        sh 'docker run --name nodeappcontainer --detach --publish 8081:8080 devopsbh/nodeapp'
         sh 'docker container ls'
         sh 'curl http://localhost:8081'    
         sh 'docker stop nodeappcontainer'
@@ -25,6 +25,7 @@ node {
     stage("Cleanup") {
         echo 'done :)'
         // I stopped the shell invoked Docker container early in case it conflicted with the Docker Workflow plugin's container instance 
+        sh 'docker rm nodeappcontainer'  
         // sorry for not commiting to 1 way or the other; I wanted to use Docker Worfklow but realises that "curling" it was awkward 
     } 
 }
