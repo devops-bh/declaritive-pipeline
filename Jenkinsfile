@@ -4,10 +4,10 @@ node {
         sh 'docker image build --tag devopsbh/nodeapp .'    
     } 
     stage("Test") {
-        sh 'docker container run --name nodeapp --detach --publish 8081:8080 devopsbh/nodeapp'
+        sh 'docker container run --name nodeappcontainer --detach --publish 8081:8080 devopsbh/nodeapp'
         sh 'docker container ls'
         sh 'curl http://localhost:8081'    
-        sh 'docker container stop nodeapp'
+        sh 'docker container stop nodeappcontainer'
     }
     stage("Deploy") {
         /* 
