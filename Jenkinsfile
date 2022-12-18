@@ -19,7 +19,7 @@ node {
     stage("Confirm Deplyment") {
         /*
          sh 'ssh ubuntu@3.231.223.4 curl $(minikube node-port-service --url)'
-        // sh 'ssh ubuntu@3.82.157.75 kubectl get services'
+        // sh 'ssh ubuntu@34.239.128.19 kubectl get services'
         */
     }
     stage("Cleanup") {
