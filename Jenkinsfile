@@ -10,13 +10,11 @@ node {
         sh 'docker container stop nodeappcontainer'
     }
     stage("Deploy") {
-        /* 
       def image = docker.build 'devopsbh/nodeapp'
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             image.push 'latest'
         }
        sh 'ansible-playbook -i inventory ansible-kube-release.yml --tags update'
-        */
     }
     stage("Confirm Deplyment") {
         /*
