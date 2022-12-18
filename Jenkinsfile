@@ -24,9 +24,10 @@ node {
     }
     stage("Confirm Deplyment") {
         sshagent(['jssh']) {
-        sh 'echo $(ssh ubuntu@54.211.119.184 curl $(minikube node-port-service --url))'
-        sh 'echo $(ssh ubuntu@54.211.119.184 kubectl get services)'
-        // could optionally Ngrok here too 
+            sh 'echo $(ssh ubuntu@54.211.119.184 curl $(minikube node-port-service --url))'
+            sh 'echo $(ssh ubuntu@54.211.119.184 kubectl get services)'
+            // could optionally Ngrok here too 
+        }
         echo 'go run kubernetes manually :)'
     }
     stage("Cleanup") {
