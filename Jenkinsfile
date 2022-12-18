@@ -15,13 +15,19 @@ node {
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             image.push 'latest'
         }
-       sh 'ansible-playbook -i inventory ansible-kube-release.yml --tags update'
+        // Having 2 different users access the same instance was too awkward for the scope of this project :| 
+       //sh 'ansible-playbook -i inventory ansible-kube-release.yml --tags update'
+        sshagent(['jssh']) {
+            sh 'ssh ubuntu@54.211.119.184 kubectl set image deployments/nodeapp nodeapp=devopsbh/nodeapp:latest'
+            sh 'echo $(ssh ubuntu@54.211.119.184 kubectl rollout status deployments/nodeapp)'
+        }
     }
     stage("Confirm Deplyment") {
-        /*
-         sh 'ssh ubuntu@3.231.223.4 curl $(minikube node-port-service --url)'
-        // sh 'ssh ubuntu@34.239.128.19 kubectl get services'
-        */
+        sshagent(['jssh']) {
+        sh 'echo $(ssh ubuntu@54.211.119.184 curl $(minikube node-port-service --url))'
+        sh 'echo $(ssh ubuntu@54.211.119.184 kubectl get services)'
+        // could optionally Ngrok here too 
+        echo 'go run kubernetes manually :)'
     }
     stage("Cleanup") {
         echo 'done :)'
