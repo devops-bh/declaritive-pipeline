@@ -16,11 +16,11 @@ node {
             image.push 'latest'
         }
         // Having 2 different users access the same instance was too awkward for the scope of this project :| 
-       //sh 'ansible-playbook -i inventory ansible-kube-release.yml --tags update'
-        sshagent(['jssh']) {
+       sh 'ansible-playbook -i inventory ansible-kube-release.yml --tags update'
+        /*sshagent(['jssh']) {
             sh 'ssh ubuntu@34.235.26.99 kubectl set image deployments/nodeapp nodeapp=devopsbh/nodeapp:latest'
             sh 'echo $(ssh ubuntu@34.235.26.99 kubectl rollout status deployments/nodeapp)'
-        }
+        }*/
     }
     stage("Confirm Deplyment") {
         sshagent(['jssh']) {
