@@ -1,12 +1,12 @@
 node {
     stage("Build") {
-        def image = docker.build 'devopsbh/nodeapp'
-        docker.withDockerContainer('devops/nodeapp', 'nodeapp') {
-            sh 'ls'
-        }
+        git branch: 'main', url: 'https://github.com/devops-bh/declaritive-pipeline.git'
+        sh 'docker image build --tag devopsbh/nodeapp .'    
+        sh 'docker container run --detach --publish 8081:8080 --name nodeapp devopsbh/nodeapp'
     } 
     stage("Test") {
-        // curl 'http://google.com'
+        sh 'curl http://localhost:8081'    
+        sh 'docker container stop nodeapp'
     }
     stage("Deploy") {
         /* 
@@ -19,16 +19,14 @@ node {
     }
     stage("Confirm Deplyment") {
         /*
-        // may need to use ssh since this isn't public 
-        //sh "curl http://44.195.81.167:8080"
-        //sh "ssh ubuntu@44.195.81.167 curl $(minikube ip):"
          sh 'ssh ubuntu@3.231.223.4 curl $(minikube node-port-service --url)'
-        */
-        //echo 'attempting ssh'
         // sh 'ssh ubuntu@3.82.157.75 kubectl get services'
+        */
     }
     stage("Cleanup") {
-        //sh 'done :)'
+        echo 'done :)'
+        // I stopped the shell invoked Docker container early in case it conflicted with the Docker Workflow plugin's container instance 
+        // sorry for not commiting to 1 way or the other; I wanted to use Docker Worfklow but realises that "curling" it was awkward 
     } 
 }
 
