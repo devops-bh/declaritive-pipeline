@@ -6,7 +6,7 @@ node {
     stage("Test") {
         sh 'docker container run --detach --publish 8081:8080 devopsbh/nodeapp'
         sh 'docker container ls'
-        //sh 'curl http://localhost:8081'    
+        sh 'curl http://localhost:8081'    
         sh 'docker container stop nodeapp'
     }
     stage("Deploy") {
