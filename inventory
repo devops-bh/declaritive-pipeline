@@ -2,4 +2,4 @@
 ansible_ssh_private_key_file=~/.ssh/mykey.pub
 
 [production]
-ubuntu@3.82.157.75
+ubuntu@34.239.128.19
